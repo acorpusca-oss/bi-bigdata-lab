@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - feature/physical-dimensional-model
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate Liquibase files
+        run: |
+          echo "Validando estructura del proyecto..."
+          test -f changelog/db.changelog-master.yaml
+          test -f changelog/changes/001_create_bi_schema.sql
+          test -f changelog/changes/002_create_staging_schema.sql
+          test -f changelog/changes/003_create_dim_date.sql
+          test -f changelog/changes/004_create_dim_product.sql
+          test -f changelog/changes/005_create_dim_customer.sql
+          test -f changelog/changes/006_create_dim_store.sql
+          test -f changelog/changes/007_create_fact_sales.sql
+          echo "Validación exitosa"
