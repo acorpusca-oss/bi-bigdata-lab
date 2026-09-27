@@ -1,0 +1,19 @@
+# BI Big Data - Laboratorio 05
+
+Implementación física de un Star Schema con Delta Tables, Liquibase y CI/CD.
+
+## Modelo
+
+- dim_date
+- dim_product
+- dim_customer
+- dim_store
+- fact_sales
+
+## Plataforma
+
+- Databricks
+- Unity Catalog
+- Delta Lake
+- Liquibase
+- GitHub Actions
